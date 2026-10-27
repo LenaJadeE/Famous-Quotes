@@ -1,5 +1,8 @@
 package com.pluralsight;
 
+import java.util.Random;
+import java.util.Scanner;
+
 public class FamousQuotes {
     public static void main(String[] args) {
         String[] quotes ={
@@ -15,6 +18,33 @@ public class FamousQuotes {
                 "Any fool can write code that a computer can understand. - Martin Fowler",
                 "My dreams were all my own I accounted for them to nobody they were my refuge when annoyed—my dearest pleasure when free. - Mary Shelley"
         };
+
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        String again;
+
+        do {
+            System.out.printf("Pick a quote (1 - %d), or R for a random quote: ", quotes.length);
+            String input = scanner.nextLine().trim();
+
+            try {
+                if (input.equalsIgnoreCase("r")) {
+                    System.out.println(quotes[random.nextInt(quotes.length)]);
+                } else {
+                    int number = Integer.parseInt(input);
+                    int index = number - 1;
+
+                    System.out.println(quotes[index]);
+                }
+            }
+            catch (ArrayIndexOutOfBoundsException e) {
+                System.out.printf("Your number was out of range. Please pick 1 - %d.%n", quotes.length);
+            }
+            catch (NumberFormatException e) {
+                System.out.println("That wasn't a number. Enter 1 - " + quotes.length + " or R.");
+            }
+
+        }
     }
 }
 // EXERCISE 1
