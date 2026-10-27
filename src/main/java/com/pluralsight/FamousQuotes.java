@@ -36,21 +36,23 @@ public class FamousQuotes {
 
                     System.out.println(quotes[index]);
                 }
-            }
-            catch (ArrayIndexOutOfBoundsException e) {
+            } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.printf("Your number was out of range. Please pick 1 - %d.%n", quotes.length);
-            }
-            catch (NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("That wasn't a number. Enter 1 - " + quotes.length + " or R.");
             }
 
-        }
+            System.out.print("Would you like to see another saying? (yes/no): ");
+            again = scanner.nextLine().trim();
+        } while (again.equalsIgnoreCase("yes") || again.equalsIgnoreCase("y"));
+
+        System.out.println("Goodbye!");
+        scanner.close();
     }
 }
 // EXERCISE 1
 //  Create a new Java application named famous-quotes.
-//      Remember: When creating a new Java project, create a new git repository and commit your changes often!
-//  Don’t forget to push to github.com. Always share your IntelliJ project to GitHub!
+//      Remember: Always share your IntelliJ project to GitHub!
 //  Create an array of strings to store 10 quotes. Add 10 of your favorite quotes to the array.
 //  Prompt the user to select a number between 1 and 10 and display that quote.
 //  DO NOT use try/catch (yet) to handle the error.
